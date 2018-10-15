@@ -16,7 +16,9 @@ $this->beginPage() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="top"></div>
+<div class="top">
+
+</div>
 <?= $content ?>
 <div class="bottom"></div>
 <?php $this->endBody() ?>
