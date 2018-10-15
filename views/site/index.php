@@ -10,4 +10,13 @@ echo Html::beginForm(['/site/logout'], 'post')
 ?>
 <main>
 <?= "Эта страница должна быть видна только зарегистрированным пользователям"?>
+<ul class="list-group">
+    <?php
+    foreach ($users as $user) {
+        ?>
+        <li class="list-group-item"><?= $user["name"] ?></li>
+        <?php
+    }
+    ?>
+</ul>
 </main>

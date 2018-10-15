@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\AvailableUsers;
 
 class SiteController extends Controller
 {
@@ -63,8 +64,11 @@ class SiteController extends Controller
     {
         $model = new LoginForm();
         if (!Yii::$app->user->isGuest) {
+            $users = AvailableUsers::find()->select('name')->asArray()->all();
+
             return $this->render('index', [
                 'model' => $model,
+                'users' => $users,
             ]);
         }
 
@@ -76,7 +80,14 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
-    }
+    }/*
+    public function getUsers() {
+
+        //$socket = new Sock();
+        return $this->render('index', [
+            'users' => $users,
+        ]);
+    }*/
 
     /**
      * Login action.
