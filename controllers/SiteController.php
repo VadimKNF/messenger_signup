@@ -61,11 +61,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $model = new LoginForm();
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->render('index', [
+                'model' => $model,
+            ]);
         }
 
-        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
